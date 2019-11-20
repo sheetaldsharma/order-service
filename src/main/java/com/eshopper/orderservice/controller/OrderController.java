@@ -4,9 +4,11 @@ import com.eshopper.orderservice.model.Order;
 import com.eshopper.orderservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("order")
@@ -20,5 +22,12 @@ public class OrderController {
     {
         System.out.println("size = "+ orderService.getAllOrders().size());
         return (List<Order>) orderService.getAllOrders();
+    }
+
+    @GetMapping("/{orderId}")
+    public Optional<Order> getOrderDetails(@PathVariable("orderId") Integer orderId)
+    {
+        System.out.println("in getOrderDetails"+orderId);
+        return orderService.getOrderDetails(orderId) ;
     }
 }
