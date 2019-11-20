@@ -23,4 +23,9 @@ public class OrderService{
         System.out.println("in service ="+orderId);
         return orderRepository.findById(orderId);
     }
+
+    public List<Order> getCustomerOrderDetails(Integer customerId)
+    {
+        return orderRepository.findOrdersByCustomerId(customerId);
+    }
 }

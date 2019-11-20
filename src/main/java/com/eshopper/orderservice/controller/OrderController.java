@@ -30,4 +30,10 @@ public class OrderController {
         System.out.println("in getOrderDetails"+orderId);
         return orderService.getOrderDetails(orderId) ;
     }
+
+    @GetMapping("/{customerId}/orderDetails")
+    public List<Order> getCustomerOrderDetails(@PathVariable("customerId") Integer customerId)
+    {
+        return orderService.getCustomerOrderDetails(customerId);
+    }
 }
